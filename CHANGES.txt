@@ -1,0 +1,62 @@
+v2.7.2 (2014-01-02), final version:
+  - replaced mkisofs binary by a newer version (3.01a16) that has the UEFI bug fixed
+  - added checks for Windows versions 8 and 8.1 resp. Server 2012 (R2)
+  - added checks for "(" and ")" in package file name (would make the script fail).
+  - moved version check script to vibsdepot.v-front.de
+
+v2.7.1 (2012-07-15):
+  - fixed "Dell" bug (% in host profile xml name, QFE270001)
+  - minor code changes to adapt to upcoming minor update releases of ESXi 5 (5.x)
+
+v2.7 (2012-02-21):
+  - moved TGZ2VIB5.cmd tool to the new package
+        "ESXi 5 Community Packaging Tools" (see http://esxi5-cpt.v-front.de)
+  - replaced the "Advanced Edit" feature with more flexible choices for TGZ repackaging
+  - when adding an Offline bundle zip file have addition of each contained VIB file confirmed
+  - Added *Deprecated* warning when adding TGZ file to ESXi 5.0
+  - replaced some UnxUtils tools with busybox calls
+
+v2.6.2 (2011-12-13):
+  - now really fixed the bug with VIB handling resulting in error messages like this one:
+    IOError: [Errno 2] No such file or directory: '/tardisks/net-e100.v01'
+
+v2.6.1 (2011-12-04):
+  - fixed a bug with VIB handling resulting in error messages like this one:
+    IOError: [Errno 2] No such file or directory: '/tardisks/net-e100.v01'
+  - Updated TGZ2VIB5.cmd to version 1.0.1: fixes "Advanced edit mode"
+
+v2.6 (2011-11-17):
+  - added option to create (U)EFI-bootable ISO for ESXi 5.0
+  - warn if a ESXi 4.x OEM.tgz file is to be added to an ESXi 5.0 ISO (the top support issue ...)
+  - added developer tool script TGZ2VIB5.cmd to convert an OEM.tgz-style ESXi 5.0 driver package into vib-format
+
+v2.5 (2011-09-29):
+  - added support for adding VIB files and Offline bundles (zip-format) to ESXi 5.0
+  - Fixed UAC-related issues/bugs when customizing ESXi 4.1
+  - Fixed bug with unpacking OEM.tgz files
+  - Force re-packaging of OEM.tgz-files to fix broken files
+  - Changed logging to be less verbose on console
+
+v2.0 (2011-08-25):
+  - added support for customizing ESXi 5.0 with standard OEM.tgz files. For ESXi 5.0 customizations Windows XP
+    is the minimum OS requirement and administrative rights are not needed.
+  - tools\getparams.exe: Network shares will no longer be accepted for the working dir, because the script only
+    supports local hard drives that are NTFS formatted.
+  - Enable more Windows-like script interaction by using message boxes
+  - tools\mksiofs.exe: reverted back to cdrtools-3.0, because mkisofs-3.01a05 builds ISOs that 7zip cannot extract
+  - changed distribution format to a signed self-extracting archive created with 7-zip
+
+v1.2 (2011-08-10):
+  - Finally fixed OEM.tgz re-packaging in advanced edit mode (now using Windows-port of busybox)
+  - fixed wget timeout settings for update check
+
+v1.1 (2011-07-28):
+  - Changed OEM.tgz re-packaging in advanced edit mode (using 7zip.exe results in ESXi installation errors)
+  - added update check feature to inform users about newer versions of the script
+  - added README.txt to installation directory
+  - launch explorer.exe in advanced-edit mode
+  - tools\mksiofs.exe: updated to cdrtools-3.01a05 to enable building ISOs with efi-boot support (needed for ESXi 5.0)
+  - tools\getparams.exe: fixed URL typo in window title, set default workdir if not defined, get updateCheck flag
+
+v1.0 (2011-07-25):
+  - first release
